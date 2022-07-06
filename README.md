@@ -38,7 +38,7 @@ Note:
         make
 
 
-### Benchmark NGINX-OQS vs NGINX
+### Benchmarking NGINX-OQS vs NGINX
 
 The two folders inside the [nginx directory](https://github.com/Post-Quantum-Mesh/benchmarking/tree/main/nginx) contain an nginx-oqs fork and a vanilla implementation of an nginx reverse proxy.
 
@@ -50,12 +50,36 @@ and then terminated using
 
     ./kill.sh
 
+
+### Benchmarking Envoy
+
+Note: This build currently is only functional with standard RSA encryption
+
+The current envoy-oqs build is found inside the [envoy directory](https://github.com/Post-Quantum-Mesh/benchmarking/tree/main/envoy).
+
+To start the build, run
+
+    ./init.sh
+    
+To terminate, use
+
+    ./kill.sh
+
+
+### Test Script Instructions
+
 A sample test script has been provided, and can be run by
 
     python test_script.py
     
-The above script requires that nghttp2 has been built locally from source with the correct configurations. h2load can be used from the command line, for example
+The above script requires that nghttp2 has been built locally from source with the correct configurations. h2load can also be used from the command line, for example
 
     h2load -n100000 -t4 -c8 --ht https://localhost:4433
+
+The script runs through a sample range of parameters that can be modified within the file itself.
+
+    num_threads = h2load -t flag
+    num_concurrent = h2load -c flag
+    n_iter = number of iterations to average for each parameter combination
 
 The full documentation can be found [here](https://nghttp2.org/documentation/h2load.1.html)
