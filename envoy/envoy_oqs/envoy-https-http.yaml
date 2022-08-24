@@ -31,17 +31,10 @@ static_resources:
         typed_config:
           "@type": type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.DownstreamTlsContext
           common_tls_context:
-            tls_params:
-              tls_minimum_protocol_version: TLSv1_0
-              tls_maximum_protocol_version: TLSv1_3
             tls_certificates:
               certificate_chain: {"filename": "/etc/example/servercert.pem"}
               private_key: {"filename": "/etc/example/serverkey.pem"}
-            validation_context:
-              trust_chain_verification: ACCEPT_UNTRUSTED
-              trusted_ca: {"filename": "/etc/example/CA_cert.pem"}
-          require_client_certificate: false
-
+          
   clusters:
   - name: service-http
     type: STRICT_DNS
