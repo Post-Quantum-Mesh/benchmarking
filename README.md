@@ -45,7 +45,7 @@ The two folders inside the [nginx directory](https://github.com/Post-Quantum-Mes
 Each of these can be initialized with the following
 
     ./init.sh
-        
+
 and then terminated using
 
     ./kill.sh
@@ -53,14 +53,14 @@ and then terminated using
 
 ### Benchmarking Envoy
 
-Note: This build currently is only functional with standard RSA encryption
+Note: TLS currently is now functional with standard and post-quantum encryption (8-24 commit)
 
 The current envoy-oqs build is found inside the [envoy directory](https://github.com/Post-Quantum-Mesh/benchmarking/tree/main/envoy).
 
 To start the build, run
 
     ./init.sh
-    
+
 To terminate, use
 
     ./kill.sh
