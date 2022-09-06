@@ -30,7 +30,7 @@ RUN git clone --branch main --single-branch --depth 1 https://github.com/open-qu
     && git clone --branch main --single-branch --depth 1 https://github.com/open-quantum-safe/liboqs.git liboqs-static \
     && git clone --depth 1 --branch OQS-OpenSSL_1_1_1-stable https://github.com/open-quantum-safe/openssl.git \
     && git clone --branch master https://github.com/open-quantum-safe/boringssl.git \
-    && git clone https://github.com/drouhana/envoy-fork.git envoy \
+    && git clone https://github.com/drouhana/envoy.git envoy \
     && wget http://www.openssl.org/source/openssl-1.1.1g.tar.gz \
     && tar -zxvf openssl-1.1.1g.tar.gz
 
@@ -118,7 +118,7 @@ RUN bazel/setup_clang.sh /usr/local/clang+llvm-14.0.0-x86_64-linux-gnu-ubuntu-18
 
 # Push build command to user.bazelrc file
 WORKDIR /usr/local/envoy
-RUN echo "build --config=libc++ --define quiche=disabled --define wasm=disabled --define deprecated_features=disabled --//bazel:http3=false --//source/extensions/quic/crypto_stream:enabled=false --//source/extensions/quic/proof_source:enabled=false" >> user.bazelrc
+RUN echo "build --config=libc++" >> user.bazelrc
 
 
 # Build Envoy
